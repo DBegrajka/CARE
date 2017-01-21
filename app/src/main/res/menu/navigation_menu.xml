@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/nav_history"
+        android:title="History"
+        android:icon="@drawable/ic_history_black_24dp"
+        />
+
+    <item android:id="@+id/nav_charity"
+        android:title="preferred Charity"
+        android:icon="@drawable/ic_attach_money_black_24dp"
+        />
+
+    <item android:id="@+id/nav_status"
+        android:title="Receipt Status"
+        android:icon="@drawable/ic_receipt_black_24dp"
+        />
+
+    <item android:id="@+id/nav_help"
+        android:title="Help"
+        android:icon="@drawable/ic_help_outline_black_24dp"
+        />
+
+    <item android:id="@+id/nav_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        />
+
 </menu>
