@@ -2,21 +2,54 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimaryDark">
 
-    <TextView
-        android:text="Hello"
-        android:layout_width="wrap_content"
+    <RelativeLayout
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="21dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="49dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="48dp"
-        android:id="@+id/textView2"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:layout_alignParentStart="true">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:id="@+id/circle_profile"
+            android:src="@drawable/deepak"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp"
+            android:layout_marginTop="20dp"/>
+
+
+
+        <TextView
+            android:text="Deepak Begrajka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="20dp"
+            android:layout_alignTop="@+id/circle_profile"
+            android:layout_toRightOf="@+id/circle_profile"
+            android:layout_toEndOf="@+id/circle_profile" />
+
+        <TextView
+            android:text="deepakbegrajka@gmail.com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+    >
 </RelativeLayout>
