@@ -29,17 +29,19 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/count"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:paddingTop="50dp"
-            android:text="          04.84"
+            android:text="04.84"
             android:textSize="50dp"
             android:textColor="#000000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textAlignment="center"/>
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="303dp"
-            android:text="       Km"
+            android:text="          Meter"
             android:textSize="50dp"
             android:textColor="#000000"
             android:textStyle="bold"
@@ -62,13 +64,15 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight= "2.69"
-        android:weightSum="1">
+        android:weightSum="2">
 
-        <ImageButton
+
+
+        <Button
             android:id="@+id/start_button"
             android:layout_width="160dp"
             android:layout_height="152dp"
@@ -76,11 +80,13 @@
             android:layout_marginLeft="120dp"
             android:padding="15dp"
             android:background="@drawable/button_bg_round"
-            android:src="@drawable/start"
+            android:text="START"
+            android:textSize="40dp"
+            android:backgroundTint="#00E676"
             android:scaleType="fitCenter"
             android:onClick="start"/>
 
-    </LinearLayout>
+    </RelativeLayout>
     </LinearLayout>
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
