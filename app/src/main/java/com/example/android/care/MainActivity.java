@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     boolean activityRunning;
     private TextView count;
     boolean on = false;
+    Float start;
+    Float stop;
+    Float dollar = 1.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +67,37 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Button btn = (Button)findViewById(start_button);
      //   btn.setImageResource(R.drawable.stop);
         TextView tv = (TextView) findViewById(R.id.count);
+        TextView dollarstr = (TextView) findViewById(R.id.dollar);
+
         if (on == false) {
+    // buttonn is pressed and set to start
             btn.setText("STOP");
+            TextView editText = (TextView) findViewById(R.id.count);
+            String editTextStr = editText.getText().toString();
+            Log.d("myTag", editTextStr);
+            start= Float.parseFloat(editTextStr);
+            Log.d("Integer",  "value: " + start);
             tv.setText("0.0");
            // btn.setBackgroundResource(R.drawable.red_background);
-
             on = true;
             Log.d("myTag", "inside if");
+            dollarstr.setText("0.0");
+            dollar = 1.0f;
+
 
         } else  if (on == true){
+
+            TextView editText = (TextView) findViewById(R.id.count);
+            String editTextStr2 = editText.getText().toString();
+            Log.d("myTag2", editTextStr2);
+            stop= Float.parseFloat(editTextStr2);
+            Log.d("Integer",  "value: " + stop);
+            Float total_meters = stop - start;
+            dollar = dollar * total_meters ;
+            Log.d("Total distance",  "value: " + total_meters);
+            Log.d("Dollar",  "value: " + dollar);
+            String mytext=Float.toString(dollar);
+            dollarstr.setText(mytext);
             btn.setText("START");
             Log.d("myTag", "inside else");
             on = false;
@@ -103,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event){
              if(activityRunning){
+                 count.setText("0.0");
                  count.setText(String.valueOf(event.values[0]));
              }
     }
