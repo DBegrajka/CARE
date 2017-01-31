@@ -1,6 +1,7 @@
 package com.example.android.care;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     Float start;
     Float stop;
     Float dollar = 1.0f;
+    private Session session;
+    private Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +55,50 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         count = (TextView) findViewById(R.id.count);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        session = new Session(this);
+        if (!session.loggedin()){
+            logout();
+        }
+        btnLogout = (Button)findViewById(R.id.logout);
+        btnLogout.setOnClickListener(new View.OnClickListener(){
+           @Override
+            public void onClick(View v){
+               logout();
+           }
+        });
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mToggle.onOptionsItemSelected(item)){
             return true;
         }
+        //Handle action bar Item
+        switch (item.getItemId()){
+            case R.id.nav_history:
+                startActivity(new  Intent(MainActivity.this, history_activity.class));
+                break;
+
+            case R.id.nav_charity:
+
+                break;
+            case R.id.nav_status:
+
+                break;
+
+            case R.id.nav_help:
+
+                break;
+
+            case R.id.nav_logout:
+                logout();
+               // return true;
+            default:
+        }
         return super.onOptionsItemSelected(item);
-    }
+        }
 
     public void start(View view){
 
@@ -136,6 +174,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){
 
+    }
+
+    private void logout(){
+        session.setLoggedin(false);
+        finish();
+        startActivity(new Intent(MainActivity.this, login_activity.class));
     }
 
 }
