@@ -127,6 +127,12 @@
             android:backgroundTint="#00E676"
             android:scaleType="fitCenter"
             android:onClick="start"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:id="@+id/logout"
+            />
 
     </RelativeLayout>
     </LinearLayout>
