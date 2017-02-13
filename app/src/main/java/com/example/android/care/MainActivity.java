@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
+
 import static com.example.android.care.R.id.start_button;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
@@ -66,8 +68,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                logout();
            }
         });
+
+
+    /*    if (AccessToken.getCurrentAccessToken() == null){
+            goLoginScreen();
+        }*/
     }
 
+
+   /* void goLoginScreen(){
+        Intent intent = new Intent(this, login_activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    } */
 
 
     @Override
@@ -79,25 +92,24 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         switch (item.getItemId()){
             case R.id.nav_history:
                 startActivity(new  Intent(MainActivity.this, history_activity.class));
-                break;
+                return true;
 
             case R.id.nav_charity:
+                return  true;
 
-                break;
             case R.id.nav_status:
-
-                break;
+                return true;
 
             case R.id.nav_help:
+                return true;
 
-                break;
 
             case R.id.nav_logout:
                 logout();
-               // return true;
+                return true;
             default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
         }
 
     public void start(View view){
@@ -147,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onResume(){
         super.onResume();
         activityRunning = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         if (countSensor != null){
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
 
@@ -179,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void logout(){
         session.setLoggedin(false);
         finish();
+        LoginManager.getInstance().logOut();
         startActivity(new Intent(MainActivity.this, login_activity.class));
     }
 
