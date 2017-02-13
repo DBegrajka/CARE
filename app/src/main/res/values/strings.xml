@@ -2,4 +2,8 @@
     <string name="app_name">CARE</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="facebook_app_id">254456558333942</string>
+    <string name="cancel_login"> cancel_login </string>
+    <string name="error_login"> error_login </string>
+
 </resources>
